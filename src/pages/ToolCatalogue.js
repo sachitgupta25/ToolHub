@@ -24,56 +24,56 @@ const ToolCatalogue = () => {
               id: 1,
               toolname: "Image Resizer",
               description: "Resize images to custom dimensions while maintaining quality. Supports JPG, PNG, and WebP formats.",
-              image: "https://via.placeholder.com/300x200?text=Image+Resizer",
+              image: "https://images.pexels.com/photos/1449638/pexels-photo-1449638.jpeg",
               status: "active"
             },
             {
               id: 2,
               toolname: "PDF Converter",
               description: "Convert various document formats (Word, Excel, PowerPoint) to PDF format quickly and securely.",
-              image: "https://via.placeholder.com/300x200?text=PDF+Converter",
+              image: "https://images.pexels.com/photos/6032773/pexels-photo-6032773.jpeg",
               status: "active"
             },
             {
               id: 3,
               toolname: "Text Analyzer",
               description: "Analyze text for sentiment, keywords, readability score, and word count statistics.",
-              image: "https://via.placeholder.com/300x200?text=Text+Analyzer",
+              image: "https://images.pexels.com/photos/9783353/pexels-photo-9783353.jpeg",
               status: "maintenance"
             },
             {
               id: 4,
               toolname: "Video Compressor",
               description: "Compress video files to reduce size without losing quality. Supports MP4, AVI, MOV formats.",
-              image: "https://via.placeholder.com/300x200?text=Video+Compressor",
+              image: "https://images.pexels.com/photos/593324/pexels-photo-593324.jpeg",
               status: "active"
             },
             {
               id: 5,
               toolname: "QR Code Generator",
               description: "Generate QR codes for URLs, text, contact information, WiFi credentials, and more.",
-              image: "https://via.placeholder.com/300x200?text=QR+Generator",
+              image: "https://images.pexels.com/photos/12935051/pexels-photo-12935051.jpeg",
               status: "active"
             },
             {
               id: 6,
               toolname: "Color Palette Extractor",
               description: "Extract dominant colors from uploaded images and generate beautiful color palettes.",
-              image: "https://via.placeholder.com/300x200?text=Color+Extractor",
+              image: "https://images.pexels.com/photos/7552373/pexels-photo-7552373.jpeg",
               status: "inactive"
             },
             {
               id: 7,
               toolname: "Audio Trimmer",
               description: "Trim and cut audio files with precision. Supports MP3, WAV, and AAC formats.",
-              image: "https://via.placeholder.com/300x200?text=Audio+Trimmer",
+              image: "https://images.pexels.com/photos/6686442/pexels-photo-6686442.jpeg",
               status: "active"
             },
             {
               id: 8,
               toolname: "Excel to JSON",
               description: "Convert Excel spreadsheets to JSON format for easy data processing and API integration.",
-              image: "https://via.placeholder.com/300x200?text=Excel+to+JSON",
+              image: "https://images.pexels.com/photos/11035481/pexels-photo-11035481.jpeg",
               status: "active"
             }
           ];
@@ -166,9 +166,87 @@ const ToolCatalogue = () => {
 
   return (
     <div className="tool-catalogue">
+      <style jsx>{`
+        .animated-title {
+          animation: slideInFromLeft 1.2s ease-out;
+          color: #4A90E2 !important;
+          font-weight: bold;
+          text-shadow: 0 2px 10px rgba(74, 144, 226, 0.3);
+        }
+        
+        .animated-subtitle {
+          animation: slideInFromRight 1.2s ease-out 0.4s both, glow 2s ease-in-out infinite alternate;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .animated-subtitle::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+          animation: shimmer 2.5s infinite;
+        }
+
+        @keyframes slideInFromLeft {
+          0% {
+            opacity: 0;
+            transform: translateX(-50px) scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+
+        @keyframes slideInFromRight {
+          0% {
+            opacity: 0;
+            transform: translateX(50px) scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+
+        @keyframes colorShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        @keyframes glow {
+          0% {
+            text-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+          }
+          100% {
+            text-shadow: 0 0 15px rgba(74, 144, 226, 0.6), 0 0 25px rgba(74, 144, 226, 0.4);
+          }
+        }
+
+        @keyframes shimmer {
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 100%;
+          }
+        }
+      `}</style>
+      
       <div className="catalogue-header">
-        <h1>Tool Catalogue</h1>
-        <p>Discover and use our collection of {tools.length} powerful tools</p>
+        <h1 className="animated-title">Tool Catalogue</h1>
+        <p className="animated-subtitle">Discover and use our collection of {tools.length} powerful tools</p>
       </div>
 
       <div className="tools-container">
