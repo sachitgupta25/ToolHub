@@ -1,0 +1,49 @@
+<!-- public/index.html - Complete HTML setup -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    
+    <!-- IMPORTANT: Add ALL these Google API scripts -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <!-- Alternative loading method if above doesn't work -->
+    <script>
+      // Fallback loading
+      window.onload = function() {
+        if (!window.gapi) {
+          console.warn('Google API (gapi) not loaded, attempting fallback...');
+          const script = document.createElement('script');
+          script.src = 'https://apis.google.com/js/api.js';
+          script.onload = () => console.log('Google API loaded via fallback');
+          script.onerror = () => console.error('Failed to load Google API via fallback');
+          document.head.appendChild(script);
+        } else {
+          console.log('Google API loaded successfully');
+        }
+        
+        if (!window.google || !window.google.accounts) {
+          console.warn('Google Identity Services not loaded, attempting fallback...');
+          const script2 = document.createElement('script');
+          script2.src = 'https://accounts.google.com/gsi/client';
+          script2.onload = () => console.log('Google Identity Services loaded via fallback');
+          script2.onerror = () => console.error('Failed to load Google Identity Services via fallback');
+          document.head.appendChild(script2);
+        } else {
+          console.log('Google Identity Services loaded successfully');
+        }
+      };
+    </script>
+    
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
